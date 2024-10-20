@@ -1,0 +1,60 @@
+@startuml
+class GpuSpec {
+  +int cores
+  +double frequency
+  +int memorySize
+  +void Print()
+  +void Import(string fileName)
+  +void Export(string fileName)
+}
+
+class CpuSpec {
+  +int cores
+  +double frequency
+  +string architecture
+  +void Print()
+  +void Import(string fileName)
+  +void Export(string fileName)
+}
+
+class RamSpec {
+  +int size
+  +double speed
+  +string type
+  +void Print()
+  +void Import(string fileName)
+  +void Export(string fileName)
+}
+
+class LanSpec {
+  +double speed
+  +string connectionType
+  +void Print()
+  +void Import(string fileName)
+  +void Export(string fileName)
+}
+
+class ClusterNode {
+  +CpuSpec cpu
+  +GpuSpec gpu
+  +RamSpec ram
+  +LanSpec lan
+  +void Print()
+  +void Import(string fileName)
+  +void Export(string fileName)
+}
+
+class Cluster {
+  +list<ClusterNode> nodes
+  +void AddNode(ClusterNode node)
+  +void Print()
+  +void Import(string fileName)
+  +void Export(string fileName)
+}
+
+GpuSpec --> ClusterNode
+CpuSpec --> ClusterNode
+RamSpec --> ClusterNode
+LanSpec --> ClusterNode
+ClusterNode --> Cluster
+@enduml
